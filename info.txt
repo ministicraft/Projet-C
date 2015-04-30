@@ -1,0 +1,31 @@
+convertion du plan en graphique
+	struct map du tableau + hauteur * largeur
+	tableau a 2 dimention (pos x, pos y)
+déplacement du robot
+	tourne a gauche
+	tourne a droite
+	va vers le Nord
+	va vers le Sud
+	va vers l'Ouest
+	va vers l'Est
+detection d'obstacle
+	case de devant vide
+	case de devant mur
+detection de la porte de sortie
+	dir N porte
+	dir S porte
+	dir O porte
+	dir E porte
+
+
+
+tableau map
+
+char ** carte;
+carte = malloc (hauteur * sizeof(char *));
+for(i=0; i<hauteur; i++)
+{
+	carte [i] = malloc(largeur * sizeof(char));
+}
+carte [pos_y][pos_x]
+
