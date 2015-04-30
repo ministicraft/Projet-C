@@ -1,6 +1,6 @@
 convertion du plan en graphique
-	struct map du tableau + hauteur * largeur
-	tableau a 2 dimention (pos x, pos y)
+	ok	struct map du tableau + hauteur * largeur
+	ok	tableau a 2 dimention (pos x, pos y)
 déplacement du robot
 	tourne a gauche
 	tourne a droite
