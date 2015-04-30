@@ -1,52 +1,5 @@
 #include "carte.h"
 
-/*Map *create_map (int hauteur, int largeur)
-{
-	int i;
-	char ** carte;
-	carte = malloc (hauteur * sizeof(char*));
-	for(i=0; i<hauteur; i++)
-	{
-		carte [i] = malloc(largeur * sizeof(char));
-	}
-	Map * map = NULL;
-	map = malloc(sizeof(Map));
-	map->carte = carte;
-	map->hauteur = hauteur;
-	map->largeur = largeur;
-	return map;
-}
-int init_map (Map **map)
-{
-	FILE* fp = NULL;
-	char read;
-	int i;
-	int j;
-	int hauteur;
-	int largeur;
-
-	if((fp=fopen("appart.txt","r"))==NULL)
-	{
-		printf("Erreur, impossible d'ouvrir le fichier");
-		return 1;
-	}
-
-	fscanf(fp,"%d:%d", &largeur, &hauteur);
-
-	Map * map_t = create_map(hauteur, largeur);
-
-	char ligne[map_t->largeur+1];
-	fgets(ligne,map_t->largeur,fp);
-	for(i=0; i<(map_t->hauteur)-1; i++)
-	{
-		fgets(ligne,(map_t->largeur)+1,fp);
-			map_t->carte [i]=ligne;
-			printf("%s",ligne);
-	}
-	fclose(fp);
-	* map = map_t;
-	return 0;
-}*/
 int init_map (Map* *pmap)
 {
 	//Prologue
@@ -60,7 +13,7 @@ int init_map (Map* *pmap)
 	int largeur;
 	//Map * map = NULL;
 	//ouverture du fichier
-	if((fp=fopen("appart.txt","r"))==NULL)
+	if((fp=fopen("appart2.txt","r"))==NULL)
 	{
 		printf("Erreur, impossible d'ouvrir le fichier");
 		return 1;
@@ -84,7 +37,8 @@ int init_map (Map* *pmap)
 	char ligne[largeur+2];
 	for(i=0; i<hauteur; i++)
 	{
-		fgets(ligne,largeur+2,fp); //2=+1+1 
+		fgets(ligne,largeur+2,fp); //2=+1+1 car fgets prend 1 char de moin
+									//donc +1 pour \n et +1 pour fgets
 		strncpy(map->carte[i],ligne,largeur);
 		//printf("%s\n",map->carte[i]);
 	}
