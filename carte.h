@@ -11,6 +11,13 @@ struct map
 	int largeur;
 };
 typedef struct map Map;
+struct sortie
+{
+	int posX;
+	int posY;
+};
+typedef struct sortie Sortie;
  #endif /* guard */
 int init_map (Map* *map);
 int affich_map(Map *map);
+Sortie* init_sortie(Map * map);

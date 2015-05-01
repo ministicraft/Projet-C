@@ -19,76 +19,80 @@ void turn_right (Robot *robot)
 }
 int test_collision(Robot *robot, Map * map)
 {
-	printf("test\n");
+	//printf("test\n");
 	if (robot->dir == 'N')
 	{
-		printf("test N\n");
+		//printf("test N\n");
 		if (map->carte[robot->posY-1][robot->posX]=='x')
 		{
-			printf("colision N\n");
+			//printf("colision N\n");
 			turn_right(robot);
-			printf("compteur:%d\n",robot->compteur);
+			//printf("compteur:%d\n",robot->compteur);
 			return 1;
 		}
 		else
 		{
-			printf("Pas de collision\n");
+			//printf("Pas de collision\n");
 			return 0;
 		}
 	}
 	else if (robot->dir == 'W')
 	{
-		printf("test W\n");
+		//printf("test W\n");
 		if (map->carte[robot->posY][robot->posX-1]=='x')
 		{		
-			printf("colision W\n");
+			//printf("colision W\n");
 			turn_right(robot);
-			printf("compteur:%d\n",robot->compteur);
+			//printf("compteur:%d\n",robot->compteur);
 			return 1;
 		}
 		else
 		{
-			printf("Pas de collision\n");
+			//printf("Pas de collision\n");
 			return 0;
 		}
 	}
 	else if (robot->dir == 'S')
 	{
-		printf("test S\n");
+		//printf("test S\n");
 		if (map->carte[robot->posY+1][robot->posX]=='x')
 		{
-			printf("colision S\n");
+			//printf("colision S\n");
 			turn_right(robot);
-			printf("compteur:%d\n",robot->compteur);
+			//printf("compteur:%d\n",robot->compteur);
 			return 1;
 		}
 		else
 		{
-			printf("Pas de collision\n");
+			//printf("Pas de collision\n");
 			return 0;
 		}
 	}
 	else if (robot->dir == 'E')
 	{
-		printf("test E\n");
+		//printf("test E\n");
 		if (map->carte[robot->posY][robot->posX+1]=='x')
 		{
-			printf("colision E\n");
+			//printf("colision E\n");
 			turn_right(robot);
-			printf("compteur:%d\n",robot->compteur);
+			//printf("compteur:%d\n",robot->compteur);
 			return 1;
 		}
 		else
 		{
-			printf("Pas de collision\n");
+			//printf("Pas de collision\n");
 			return 0;
 		}
 	}
 }
-/*int exit_test(Robot *robot,Map * map)
+int exit_test(Robot *robot, Sortie * sortie)
 {
-	
-}*/
+	if (robot->posX == sortie->posX && robot->posY == sortie->posY)
+	{
+		return 0;
+	}
+	else return 1;
+}
 Robot* init_robot(Map * map)
 {
 	Robot* robot = NULL;
@@ -134,7 +138,7 @@ void avance(Robot * robot, Map * map)
 void mouvement_robot (Robot * robot, Map *map)
 {
 	int collision = test_collision(robot,map);
-	printf("compteur: %d\n",robot->compteur);
+	//printf("compteur: %d\n",robot->compteur);
 	if (robot->compteur==0 && collision==0)
 	{
 		avance(robot,map);

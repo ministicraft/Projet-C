@@ -20,7 +20,7 @@ typedef struct robot Robot;
 void turn_left (Robot *robot);
 void turn_right (Robot *robot);
 int test_collision(Robot *robot, Map * map);
-int exit_test(Robot *robot, Map * map);
+int exit_test(Robot *robot, Sortie * sortie);
 Robot* init_robot(Map * map);
 void avance(Robot * robot, Map * map);
 void mouvement_robot (Robot * robot, Map *map);

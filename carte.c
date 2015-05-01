@@ -13,7 +13,7 @@ int init_map (Map* *pmap)
 	int largeur;
 	//Map * map = NULL;
 	//ouverture du fichier
-	if((fp=fopen("appart2.txt","r"))==NULL)
+	if((fp=fopen("appart.txt","r"))==NULL)
 	{
 		printf("Erreur, impossible d'ouvrir le fichier");
 		return 1;
@@ -21,7 +21,7 @@ int init_map (Map* *pmap)
 	//récupération du nb de ligne et de colone de la carte
 	fscanf(fp,"%d:%d", &largeur, &hauteur);
 	fgetc(fp); //vide le buffer
-	printf("largeur:%d,hauteur:%d\n",largeur,hauteur);
+	//printf("largeur:%d,hauteur:%d\n",largeur,hauteur);
 	//création de la carte
 	char** carte;
 	carte = malloc (hauteur * sizeof(char*));
@@ -48,7 +48,28 @@ int init_map (Map* *pmap)
 	return 0;
 }
 
-
+Sortie* init_sortie(Map * map)
+{
+	Sortie* sortie = NULL;
+	sortie = malloc (sizeof(Sortie));
+	int i;
+	int j;
+	char* ptr_j=NULL;
+	for (i=0; i<(map->hauteur); i++)
+	{
+		for(j=0;j<(map->largeur);j++)
+		{
+			if (map->carte[i][j]=='S')
+			{
+				sortie->posY=i;
+				sortie->posX=j;
+				break;
+			}
+		}
+		if (map->carte[i][j]=='S') break;
+	}
+	return sortie;
+}
 
 int affich_map(Map *map)
 {
